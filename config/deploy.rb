@@ -37,8 +37,8 @@ lock "3.10.0"
 
 server '160.16.201.7', port:10022, roles: [:app, :web, :db], primary: true
 
-set :repo_url,        'git@github.com:takahirosawamura/rails_deploycheck.git'
-set :application,     'rails-deploycheck'
+set :repo_url,        'git@github.com:takahirosawamura/rails_deploycheck2.git'
+set :application,     'rails-deploycheck2'
 set :user,            'deploy'
 set :ssh_options,     {
   forward_agent: true,
