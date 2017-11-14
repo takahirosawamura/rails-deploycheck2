@@ -8,3 +8,6 @@
 -nginx/unicornに関して(それぞれの概要まとめ。)  
 -nginxのエラーの対処。
 -nginxの初期状態と修正箇所の理解。
+
+#issue 
+-nginx/unicorn
