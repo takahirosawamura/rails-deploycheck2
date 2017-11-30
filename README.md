@@ -10,4 +10,6 @@
 -nginxの初期状態と修正箇所の理解。
 
 #issue 
--nginx/unicorn
+-nginx/unicorn]
+
+vps/rails/nginx/pumaで環境構築済み
