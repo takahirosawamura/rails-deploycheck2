@@ -1,10 +1,8 @@
 class PostsController < ApplicationController
-  def home
-  end
-
   def index
-  end
-
-  def about
+    @posts = [
+      "今日からProgateでRailsの勉強するよー！",
+      "投稿一覧ページ作成中！"
+    ]
   end
 end
