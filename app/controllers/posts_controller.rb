@@ -4,10 +4,16 @@ class PostsController < ApplicationController
   end
 
   def show
-    # find_byを用いてpostsテーブルから「params[:id]」に対応するデータを取り出し、変数@postに代入してください
     @post = Post.find_by(id: params[:id])
   end
 
   def new
+  end
+
+  def create
+    # フォームから送信されたデータを受け取り、保存する処理を追加してください
+    @post = Post.new(content: params[:content])
+    @post.save
+    redirect_to("/posts/index")
   end
 end
