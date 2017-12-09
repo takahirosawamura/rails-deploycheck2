@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "signup" => "users#new"
   get 'users/index'
   get "users/:id" => "users#show" #ユーザー詳細ページへのルーティング
 

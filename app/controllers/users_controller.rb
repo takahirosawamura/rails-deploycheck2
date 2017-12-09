@@ -6,4 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])#ユーザー情報の取得
   end
+
+  def new
+  end
 end
