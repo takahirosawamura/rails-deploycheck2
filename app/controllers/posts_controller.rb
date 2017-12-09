@@ -24,9 +24,14 @@ class PostsController < ApplicationController
   def update
     @post = Post.find_by(id: params[:id])
     @post.content = params[:content]
-    @post.save
+    if @post.save
+      redirect_to("/posts/index")
+    else
+      # redirect_to("/posts/#{@post.id}/edit")
+      # editアクションを使わないで直接レンダリングする。
+      render("posts/edit")
+    end
 
-    redirect_to("/posts/index")
   end
 
   def destroy
