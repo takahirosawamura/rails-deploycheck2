@@ -8,6 +8,7 @@
 /config/environments/*.local.yml
 /config/secrets.yml
 /config/database.yml
+/public/user_images
 
 .pryrc
 .DS_Store

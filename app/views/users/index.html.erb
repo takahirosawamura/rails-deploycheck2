@@ -3,8 +3,12 @@
     <h1 class="users-heading">ユーザー一覧</h1>
     <% @users.each do |user| %>
       <div class="users-index-item">
-        <!-- 以下のユーザー名を、ユーザー詳細ページへのリンクに書き換えてください -->
-        <%= link_to(user.name, "/users/#{user.id}") %>
+        <div class="user-left">
+          <img src="<%= "/user_images/#{user.image_name}" %>">
+        </div>
+        <div class="user-right">
+          <%= link_to(user.name, "/users/#{user.id}") %>
+        </div>
       </div>
     <% end %>
   </div>

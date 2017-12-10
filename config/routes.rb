@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # editアクションへのルーティングを設定してください
   post "users/:id/update" => "users#update"
   get "users/:id/edit" => "users#edit"
   post "users/create" => "users#create"
