@@ -1,26 +1,18 @@
-<div class="main users-edit">
+<div class="main posts-new">
   <div class="container">
-    <div class="form-heading">アカウント編集</div>
-    <div class="form users-form">
-      <div class="form-body">
-        <% @user.errors.full_messages.each do |message| %>
-          <div class="form-error">
-            <%= message %>
-          </div>
-        <% end %>
-
-        <!-- form_tagメソッドに「multipart: true」を追加してください -->
-        <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
-          <p>ユーザー名</p>
-          <input name="name" value="<%= @user.name %>">
-          <p>画像</p>
-          <!-- 画像用のフォームを追加してください -->
-          <input name = "image" type = "file">
-          <p>メールアドレス</p>
-          <input name="email" value="<%= @user.email %>">
+    <h1 class="form-heading">編集する</h1>
+    <%= form_tag("/posts/#{@post.id}/update") do %>
+      <div class="form">
+        <div class="form-body">
+          <% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          <textarea name="content"><%= @post.content %></textarea>
           <input type="submit" value="保存">
-        <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
