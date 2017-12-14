@@ -5,4 +5,8 @@ class User < ApplicationRecord
   # emailカラムに関するバリデーションを作成してください
   validates :email, {presence: true, uniqueness: true}
 
+  def posts
+    return Post.where(user_id: self.id)
+  end
+
 end
