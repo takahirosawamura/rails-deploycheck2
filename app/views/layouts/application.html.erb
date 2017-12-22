@@ -14,15 +14,19 @@
       <%= link_to("CryptHub","/") %>
       </div>
       <ul class="header-menus">
-        <% if session[:user_id] %>
-         <li>
-           現在ログインしているユーザーのid:
-           <!-- コードを追加し、ログイン中のユーザーのidを表示してください -->
-           <%= session[:user_id] %>
-         </li>
-       <% end %>
+        <!-- 現在ログイン中のユーザーを取得し、変数current_userに代入 -->
+        <% current_user = User.find_by(id: session[:user_id]) %>
 
-       <!-- ログインしている状態でヘッダーに表示するHTMLを貼り付けてください -->
+
+        <!-- if文の条件を書き換え-->
+        <% if current_user %>
+          <li>
+            <!-- ログイン中のユーザーの名前を表示し、詳細ページのリンクとなるように書き換え-->
+            <%= link_to(current_user.name,"/users/#{current_user.id}")%>
+
+          </li>
+
+       <!-- ログインしている状態でヘッダーに表示するHTMLを貼り付け -->
       <li>
         <%= link_to("投稿一覧", "/posts/index") %>
       </li>
@@ -33,11 +37,11 @@
         <%= link_to("ユーザー一覧", "/users/index") %>
       </li>
       <li>
-        <!-- ログアウト用のリンクを追加してください -->
+        <!-- ログアウト用のリンクを追加 -->
         <%= link_to("ログアウト", "/logout", {method: :post}) %>
       </li>
     <% else %>
-      <!-- ログインしていない状態でヘッダーに表示するHTMLを貼り付けてください -->
+      <!-- ログインしていない状態でヘッダーに表示するHTMLを貼り付け -->
       <li>
         <%= link_to("TweetAppとは", "/about") %>
       </li>
