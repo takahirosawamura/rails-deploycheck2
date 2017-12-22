@@ -22,42 +22,41 @@
          </li>
        <% end %>
 
+       <!-- ログインしている状態でヘッダーに表示するHTMLを貼り付けてください -->
+      <li>
+        <%= link_to("投稿一覧", "/posts/index") %>
+      </li>
+      <li>
+        <%= link_to("新規投稿", "/posts/new") %>
+      </li>
+      <li>
+        <%= link_to("ユーザー一覧", "/users/index") %>
+      </li>
+      <li>
+        <!-- ログアウト用のリンクを追加してください -->
+        <%= link_to("ログアウト", "/logout", {method: :post}) %>
+      </li>
+    <% else %>
+      <!-- ログインしていない状態でヘッダーに表示するHTMLを貼り付けてください -->
+      <li>
+        <%= link_to("TweetAppとは", "/about") %>
+      </li>
+      <li>
+        <%= link_to("新規登録", "/signup") %>
+      </li>
+      <li>
+        <%= link_to("ログイン", "/login") %>
+      </li>
+    <% end %>
+  </ul>
+</header>
 
-        <li>
-          <%= link_to("投稿一覧", "/posts/index") %>
-        </li>
-        <li>
-          <%= link_to("新規投稿", "/posts/new") %>
-        </li>
-        <li>
-          <%= link_to("ユーザー一覧", "/users/index") %>
-        </li>
-        <li>
-          <%= link_to("ログアウト", "/logout", {method: :post}) %>
-        </li>
-        <li>
-          <%= link_to("CryptHubとは", "/about") %>
-        </li>
-        <li>
-          <%= link_to("新規登録", "/signup") %>
-        </li>
-        <li>
-          <%= link_to("ログイン", "/login") %>
-        </li>
+<% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 
-
-
-
-
-      </ul>
-    </header>
-    <!-- flash[:notice]に代入されたメッセージを表示してください -->
-    <% if flash[:notice] %>
-        <div class="flash">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-
-    <%= yield %>
-  </body>
+<%= yield %>
+</body>
 </html>
