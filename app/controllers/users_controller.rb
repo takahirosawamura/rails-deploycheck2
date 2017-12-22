@@ -52,23 +52,20 @@ class UsersController < ApplicationController
   end
 
   def login
-    # 入力内容と一致するユーザーを取得し、変数@userに代入してください
-    @user = User.find_by(
-      email: params[:email],
-      password: params[:password]
-      )
-
+    @user = User.find_by(email: params[:email], password: params[:password])
     if @user
       flash[:notice] = "ログインしました"
       redirect_to("/posts/index")
     else
+      # @error_messageを定義してください
+      @error_message = "メールアドレスまたはパスワードが間違っています"
+
+      # @emailと@passwordを定義してください
+      @email = params[:email]
+      @password = params[:password]
+
       render("users/login_form")
-
     end
-
-
-    # @userが存在するかどうかを判定するif文を作成してください
-
   end
 
 end
