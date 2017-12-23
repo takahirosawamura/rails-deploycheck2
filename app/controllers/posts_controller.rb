@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
   before_action :authenticate_user
+  #before_actionにforbid_login_userメソッドを指定
+   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
+
 
   def index
     @posts = Post.all.order(created_at: :desc)
