@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
-  # before_actionにauthenticate_userメソッドを指定
-  before_action :authenticate_user,{only:[:index, :show, :edit, :update]}
-  # before_actionにensure_correct_user
+  before_action :authenticate_user, {only: [:index, :show, :edit, :update]}
+  before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
   before_action :ensure_correct_user, {only: [:edit, :update]}
-
 
   def index
     @users = User.all
@@ -21,15 +19,11 @@ class UsersController < ApplicationController
     @user = User.new(
       name: params[:name],
       email: params[:email],
-      image_name: "default_user.jpg"
-      # params[:password]をnewメソッドの引数に追加
+      image_name: "default_user.jpg",
       password: params[:password]
-
     )
     if @user.save
-      # 登録されたユーザーのidを変数sessionに代入
       session[:user_id] = @user.id
-
       flash[:notice] = "ユーザー登録が完了しました"
       redirect_to("/users/#{@user.id}")
     else
@@ -66,7 +60,6 @@ class UsersController < ApplicationController
   def login
     @user = User.find_by(email: params[:email], password: params[:password])
     if @user
-      変数sessionに、ログインに成功したユーザーのid
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
       redirect_to("/posts/index")
@@ -84,13 +77,16 @@ class UsersController < ApplicationController
     redirect_to("/login")
   end
 
-  # ensure_correct_userを定義
+  def likes
+    @user = User.find_by(id: params[:id])
+    @likes = Like.where(user_id: @user.id)
+  end
+
   def ensure_correct_user
     if @current_user.id != params[:id].to_i
       flash[:notice] = "権限がありません"
       redirect_to("/posts/index")
     end
   end
-
 
 end

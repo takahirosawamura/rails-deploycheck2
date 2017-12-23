@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user
-  #before_actionにforbid_login_userメソッドを指定
-   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
-
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
 
   def index
     @posts = Post.all.order(created_at: :desc)
@@ -11,6 +9,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
     @user = @post.user
+    @likes_count = Like.where(post_id: @post.id).count
   end
 
   def new
@@ -21,10 +20,8 @@ class PostsController < ApplicationController
     @post = Post.new(
       content: params[:content],
       user_id: @current_user.id
-  )
-
+    )
     if @post.save
-      # 変数flash[:notice]に、指定されたメッセージを代入
       flash[:notice] = "投稿を作成しました"
       redirect_to("/posts/index")
     else
@@ -33,7 +30,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-   @post = Post.find_by(id: params[:id])
+    @post = Post.find_by(id: params[:id])
   end
 
   def update
@@ -50,14 +47,13 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
-    # 変数flash[:notice]に、指定されたメッセージを代入
     flash[:notice] = "投稿を削除しました"
     redirect_to("/posts/index")
   end
 
   def ensure_correct_user
-    if @current_user.id != @post.user_id
-      @post = Post.find_by(id: params[:id])
+    @post = Post.find_by(id: params[:id])
+    if @post.user_id != @current_user.id
       flash[:notice] = "権限がありません"
       redirect_to("/posts/index")
     end
