@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   )
 
     if @post.save
-      # 変数flash[:notice]に、指定されたメッセージを代入してください
+      # 変数flash[:notice]に、指定されたメッセージを代入
       flash[:notice] = "投稿を作成しました"
       redirect_to("/posts/index")
     else
@@ -50,9 +50,17 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
-    # 変数flash[:notice]に、指定されたメッセージを代入してください
+    # 変数flash[:notice]に、指定されたメッセージを代入
     flash[:notice] = "投稿を削除しました"
     redirect_to("/posts/index")
+  end
+
+  def ensure_correct_user
+    if @current_user.id != @post.user_id
+      @post = Post.find_by(id: params[:id])
+      flash[:notice] = "権限がありません"
+      redirect_to("/posts/index")
+    end
   end
 
 end

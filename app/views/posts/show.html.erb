@@ -1,12 +1,12 @@
 <div class="main posts-show">
   <div class="container">
     <div class="posts-show-item">
-      <!--指定されたコードを貼り付けてください-->
+      <!--指定されたコードを貼り付け-->
       <div class="post-user-name">
-        <!-- ユーザーの画像が表示されるように、以下のsrcの中を埋めてください -->
+        <!-- ユーザーの画像が表示されるように、以下のsrcの中を埋める -->
         <img src="<%= "/user_images/#{@user.image_name}" %>">
 
-        <!-- link_toメソッドを用いて、ユーザー詳細ページへのリンクを作成してください -->
+        <!-- link_toメソッドを用いて、ユーザー詳細ページへのリンクを作成 -->
         <%= link_to(@user.name, "/users/#{@user.id}") %>
       </div>
 
