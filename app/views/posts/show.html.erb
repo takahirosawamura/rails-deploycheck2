@@ -18,14 +18,23 @@
         <%= @post.created_at %>
       </div>
 
+
       <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
-       <%= link_to("いいね！済み", "/likes/#{@post.id}/destroy",{method: "post"})%>
-     <% else %>
-       <!-- 以下の1行をcreateアクションへのリンク -->
-       <%= link_to("いいね！", "/likes/#{@post.id}/create",{method:"post"}) %>
+        <!-- アイコンが表示できるように、以下のlink_toメソッドを書き換え-->
+        <%= link_to("/likes/#{@post.id}/destroy", {method: "post"}) do %>
 
-     <% end %>
+        <span class="fa fa-heart like-btn-unlike"></span>
 
+
+        <% end %>
+      <% else %>
+        <!-- アイコンが表示できるように、以下のlink_toメソッドを書き換え -->
+        <%= link_to("/likes/#{@post.id}/create", {method: "post"}) do %>
+        <span class="fa fa-heart like-btn"></span>
+
+      <% end %>
+
+      <% end %>
       <% if @post.user_id == @current_user.id %>
       <div class="post-menus">
         <%= link_to("編集", "/posts/#{@post.id}/edit") %>
