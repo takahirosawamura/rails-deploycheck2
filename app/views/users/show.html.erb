@@ -4,7 +4,10 @@
       <img src="<%= "/user_images/#{@user.image_name}" %>">
       <h2><%= @user.name %></h2>
       <p><%= @user.email %></p>
-      <%= link_to("編集", "/users/#{@user.id}/edit") %>
+      <!-- @userのidとログインしているユーザーのidが等しい場合のみ、以下のリンクを表示 -->
+     <% if @user.id == @current_user.id %>
+       <%= link_to("編集", "/users/#{@user.id}/edit") %>
+     <% end %>
     </div>
     <% @user.posts.each do |post| %>
    <!-- 指定されたコードを貼り付けてください -->
@@ -20,7 +23,7 @@
      </div>
    </div>
 
- <!-- 以下の<% %>を使ってeach文のendを追加してください -->
+ <!-- 以下の<% %>を使ってeach文のendを追加-->
  <% end %>
   </div>
 </div>
