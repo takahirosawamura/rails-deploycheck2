@@ -27,14 +27,15 @@
 
 
         <% end %>
-      <% else %>
+        <% else %>
         <!-- アイコンが表示できるように、以下のlink_toメソッドを書き換え -->
         <%= link_to("/likes/#{@post.id}/create", {method: "post"}) do %>
         <span class="fa fa-heart like-btn"></span>
 
+        <% end %>
       <% end %>
 
-      <% end %>
+      <%= @likes_count %>
       <% if @post.user_id == @current_user.id %>
       <div class="post-menus">
         <%= link_to("編集", "/posts/#{@post.id}/edit") %>
