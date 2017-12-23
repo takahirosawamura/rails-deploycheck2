@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   # before_actionにauthenticate_userメソッドを指定
-  before_action:authenticate_user,{only:[:index, :show, :edit, :update]}
+  before_action :authenticate_user,{only:[:index, :show, :edit, :update]}
+  # before_actionにensure_correct_user
+  before_action :ensure_correct_user, {only: [:edit, :update]}
+
 
   def index
     @users = User.all
@@ -79,6 +82,14 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     flash[:notice] = "ログアウトしました"
     redirect_to("/login")
+  end
+
+  # ensure_correct_userを定義
+  def ensure_correct_user
+    if @current_user.id != params[:id].to_i
+      flash[:notice] = "権限がありません"
+      redirect_to("/posts/index")
+    end
   end
 
 
