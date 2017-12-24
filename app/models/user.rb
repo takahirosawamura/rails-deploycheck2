@@ -1,11 +1,13 @@
 class User < ApplicationRecord
-  # nameカラムに関するバリデーションを作成してください
+  has_secure_password
+
+  # nameカラムに関するバリデーションを作成
   validates :name, {presence: true}
 
-  # emailカラムに関するバリデーションを作成してください
+  # emailカラムに関するバリデーションを作成
   validates :email, {presence: true, uniqueness: true}
 
-  validates :password, {presence: true}
+  
 
   def posts
     return Post.where(user_id: self.id)
