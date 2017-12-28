@@ -130,7 +130,7 @@ header {
   background-repeat: no-repeat;
   background-position: center 50%;
   background-size: cover;
-  background-image: url("/top1.jpg");
+  background-image: url("/images/top1.jpg");
 
 }
 
@@ -242,3 +242,8 @@ header {
   border-radius: 0 0 2px 2px;
   font-size: 14px;
 }
+
+// // 画像検証用
+// .home {
+//   background-image: url(/images/top1.jpg);
+// }
