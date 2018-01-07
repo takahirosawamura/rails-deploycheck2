@@ -35,11 +35,10 @@ railsアプリケーションで簡単に複数人が投稿をして、いいね
 -mysql5.7
 
 ## Usage
-ただのwebアプリケーションです。
-
-## Licence
-tkcolorado
+This is a standard web app, post and recieve text. and contact with people in this sns.
 
 ## Author
 tkcolorado
 
+## Licence
+MIT license (© 2017-2018 tkcolorado)
