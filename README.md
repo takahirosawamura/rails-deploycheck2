@@ -5,7 +5,7 @@ rails-deploycheck2
 develop the system for production.  
 - CRUD
 - Likes
-- POST/DELETE/EDIT
+- POST(text and pics)/DELETE/EDIT
 
 ## Description
 -Ruby 2.3.4  
