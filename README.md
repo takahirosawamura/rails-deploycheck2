@@ -13,7 +13,7 @@ develop the system for production.
 - capistrano    
 - sakura-vps  
 - rbenv  
-- ubuntsu   
+- ubuntu   
 - nginx  
 - unicorn  
 - puma  
