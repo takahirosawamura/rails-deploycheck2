@@ -11,9 +11,9 @@ develop the system for production.
 - Ruby 2.3.4  
 - Ruby on Rails 5.0.6  
 - capistrano    
-- さくらvps  
+- sakura-vps  
 - rbenv  
-- ubuntsu   
+- ubuntu   
 - nginx  
 - unicorn  
 - puma  
