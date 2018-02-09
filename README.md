@@ -20,7 +20,7 @@ develop the system for production.
 - mysql5.7
 
 ## Usage
-This is a standard web app, post and recieve text. and contact with people in this sns.
+This is a standard web app, post and receive text. and contact with people in this sns.
 
 ## Author
 tkcolorado
