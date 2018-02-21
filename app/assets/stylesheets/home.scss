@@ -178,12 +178,26 @@ header {
 }
 
 /* about.html.erbの三分割の部分*/
-.feature ul li {
-width: 32%;
-float: left;
+.feature .col3 {
+  display: flex;
 }
-.feature ul li:nth-child(3n-1) {
-margin: 0 2%;
+
+.feature .col3 li {
+  width: calc(100% / 3);
+}
+
+.feature ul,li {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.feature li {
+  background: #ccc;
+  text-align: center;
+  padding: 20px 0;
+  border: 1px solid #fff;
 }
 
 
