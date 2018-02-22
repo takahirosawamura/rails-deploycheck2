@@ -4,7 +4,7 @@
       <div class="posts-index-item">
         <div class="post-left">
           <img src="<%= "/user_images/#{post.user.image_name}" %>">
-          <span class="fa fa-heart like-btn"></span>
+
         </div>
         <div class="post-right">
           <!-- いいね!ボタンをこの画面の中に内包させたい -->
@@ -12,7 +12,9 @@
           <div class="post-user-name">
             <%= link_to(post.user.name, "/users/#{post.user.id}") %>
           </div>
-          <%= link_to(post.content, "/posts/#{post.id}") %>
+          <%= link_to(post.content, "/posts/#{post.id}") %></br>
+          <span class="fa fa-heart like-btn"></span><p>コメント</p>
+
         </div>
       </div>
     <% end %>
